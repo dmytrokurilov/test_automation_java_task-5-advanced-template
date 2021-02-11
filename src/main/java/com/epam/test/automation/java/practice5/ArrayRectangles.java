@@ -1,52 +1,68 @@
 package com.epam.test.automation.java.practice5;
 
-/**
- * <summary>
- * Implement class according to description of task.
- * </summary>
- */
 public class ArrayRectangles {
-    //TODO: Delete line below and write your own solution;
-    //TODO: implement constructors according to description of task
 
-    /**
-     * <summary>
-     * Implement code according to description of task.
-     * </summary>
-     */
+    private final Rectangle[] rectangleArray;
+
+    public ArrayRectangles(int n)
+    {
+        rectangleArray = new Rectangle[n];
+    }
+    public ArrayRectangles(Rectangle ... rectangles)
+    {
+        rectangleArray = rectangles;
+    }
+
     public boolean addRectangle(Rectangle rectangle) {
-        //TODO: Delete line below and write your own solution;
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < rectangleArray.length; i++)
+        {
+            if (rectangleArray[i] == null)
+            {
+                rectangleArray[i] = rectangle;
+                return true;
+            }
+        }
+        return false;
     }
 
-    /**
-     * <summary>
-     * Implement code according to description of task.
-     * </summary>
-     */
     public int numberMaxArea() {
-        //TODO: Delete line below and write your own solution;
-        throw new UnsupportedOperationException();
+        int indexOfMaxRectangleArea = 0;
+        double maxSquare = 0;
+        for (int i = 0; i < rectangleArray.length; i++)
+        {
+            if (rectangleArray[i].area() > maxSquare)
+            {
+                indexOfMaxRectangleArea = i;
+                maxSquare = rectangleArray[i].area();
+            }
+        }
+        return indexOfMaxRectangleArea;
     }
 
-    /**
-     * <summary>
-     * Implement code according to description of task.
-     * </summary>
-     */
     public int numberMinPerimeter() {
-        //TODO: Delete line below and write your own solution;
-        throw new UnsupportedOperationException();
+        int number = 0;
+        double minPerimeter = rectangleArray[0].perimeter();
+        for (int i = 1; i < rectangleArray.length; i++)
+        {
+            if (rectangleArray[i] != null && minPerimeter > rectangleArray[i].perimeter())
+            {
+                minPerimeter = rectangleArray[i].perimeter();
+                number = i;
+            }
+        }
+        return number;
     }
 
-    /**
-     * <summary>
-     * Implement code according to description of task.
-     * </summary>
-     */
     public int numberSquares() {
-        //TODO: Delete line below and write your own solution;
-        throw new UnsupportedOperationException();
+        int c = 0;
+        for (int i = 0; i < rectangleArray.length; i++)
+        {
+            if (rectangleArray[i].isSquare())
+            {
+                c++;
+            }
+        }
+        return c;
     }
 
 }
